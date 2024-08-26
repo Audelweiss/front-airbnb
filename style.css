@@ -1,0 +1,16 @@
+#nav-primary {
+	> div {
+		@media (min-width: 768px) {
+			flex-wrap: nowrap !important;
+		}
+	}
+	ul li {
+		margin-left: 0 !important;
+	}
+}
+
+.card-home {
+	aspect-ratio: 1/1;
+	background-size: cover;
+	background-position: center;
+}

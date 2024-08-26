@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!-- CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<script>
+			/** @type {import('tailwindcss').Config} */
+			module.exports = {
+				important: true,
+			};
+		</script>
+	</head>
+	<body>
+		<div class="container mx-auto my-5 px-3">
+			<nav
+				id="nav-primary"
+				class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
+			>
+				<div
+					class="flex items-center justify-between flex-wrap gap-5 w-full"
+				>
+					<a
+						href="index.html"
+						class="flex shrink-0 items-center space-x-3 rtl:space-x-reverse"
+					>
+						<img
+							src="img/logo.png"
+							class="h-8"
+							alt="Flowbite Logo"
+						/>
+					</a>
+					<!-- burger menu pour mobile -->
+					<button
+						data-collapse-toggle="navbar-multi-level"
+						type="button"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						aria-controls="navbar-multi-level"
+						aria-expanded="false"
+					>
+						<span class="sr-only">Open main menu</span>
+						<svg
+							class="w-5 h-5"
+							aria-hidden="true"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 17 14"
+						>
+							<path
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M1 1h15M1 7h15M1 13h15"
+							/>
+						</svg>
+					</button>
+					<div
+						class="hidden w-full md:flex items-center p-4 md:p-0 justify-between border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row items-center md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+						id="navbar-multi-level"
+					>
+						<ul
+							class="flex flex-col md:flex-row items-center font-medium p-4 md:p-0 gap-6"
+						>
+							<li>
+								<a
+									href="index.html"
+									class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+									aria-current="page"
+									>Accueil</a
+								>
+							</li>
+							<li class="!ml-0">
+								<a
+									class="block py-2 px-3 text-neutral bg-gray-100 rounded"
+									href="list.html"
+									>Liste des annonces</a
+								>
+							</li>
+
+							<li>
+								<a
+									href="messages.html"
+									class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+									>Messages</a
+								>
+							</li>
+						</ul>
+						<ul
+							class="flex flex-col items-center md:flex-row align-center gap-4"
+						>
+							<a
+								href="post-home.html"
+								class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+							>
+								Publier mon annonce
+							</a>
+							<span
+								class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300"
+								>AH</span
+							>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<main>
+				<h1 class="text-6xl font-bold my-6">Annonces</h1>
+				<ul class="flex flex-wrap gap-3">
+					<li
+						class="card-home w-1/2 md:w-1/4 lg:w-1/5 bg-[url('https://images.unsplash.com/photo-1627519374433-e30c530696ea?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] rounded-lg overflow-hidden"
+					>
+						<a
+							href="home.html?id=X"
+							class="w-full h-full flex items-end text-white"
+						>
+							<article
+								class="p-4 bg-gradient-to-b from-transparent to-neutral-950 w-full"
+							>
+								<h2>Titre de l'annonce</h2>
+							</article>
+						</a>
+					</li>
+					<li
+						class="card-home w-1/2 md:w-1/4 lg:w-1/5 bg-[url('https://plus.unsplash.com/premium_photo-1714674731657-05fcb6a0222a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHx8')] rounded-lg overflow-hidden"
+					>
+						<a
+							href="home.html?id=X"
+							class="w-full h-full flex items-end text-white"
+						>
+							<article
+								class="p-4 bg-gradient-to-b from-transparent to-neutral-950 w-full"
+							>
+								<h2>Titre de l'annonce</h2>
+							</article>
+						</a>
+					</li>
+				</ul>
+			</main>
+		</div>
+
+		<!-- JS -->
+		<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+	</body>
+</html>
