@@ -11,6 +11,8 @@
 
 .card-home {
 	aspect-ratio: 1/1;
-	background-size: cover;
-	background-position: center;
+	> a {
+		background-size: cover;
+		background-position: center;
+	}
 }
