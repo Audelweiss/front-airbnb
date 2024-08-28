@@ -14,7 +14,7 @@ class Home {
 
 	constructor(datas) {
 		for (const prop in datas) {
-			if (this.hasOwnProperty(prop)) {
+			if (datas[prop] != null && this.hasOwnProperty(prop)) {
 				switch (prop) {
 					case "cover":
 						this[prop] = {

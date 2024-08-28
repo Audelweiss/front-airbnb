@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Détail de l'annonce : XXXX</title>
+		<!-- CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container mx-auto my-5 px-3">
+			<!-- navbar -->
+			<nav
+				id="nav-primary"
+				class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700"
+			>
+				<div
+					class="flex items-center justify-between flex-wrap gap-5 w-full"
+				>
+					<a
+						href="index.html"
+						class="flex shrink-0 items-center space-x-3 rtl:space-x-reverse"
+					>
+						<img
+							src="img/logo.png"
+							class="h-8"
+							alt="Flowbite Logo"
+						/>
+					</a>
+					<!-- burger menu pour mobile -->
+					<button
+						data-collapse-toggle="navbar-multi-level"
+						type="button"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						aria-controls="navbar-multi-level"
+						aria-expanded="false"
+					>
+						<span class="sr-only">Open main menu</span>
+						<svg
+							class="w-5 h-5"
+							aria-hidden="true"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 17 14"
+						>
+							<path
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M1 1h15M1 7h15M1 13h15"
+							/>
+						</svg>
+					</button>
+					<div
+						class="hidden w-full md:flex items-center p-4 md:p-0 justify-between border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row items-center md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+						id="navbar-multi-level"
+					>
+						<ul
+							class="flex flex-col md:flex-row items-center font-medium p-4 md:p-0 gap-6"
+						>
+							<li>
+								<a
+									href="index.html"
+									class="block py-2 px-3 text-neutral bg-gray-100 rounded"
+									aria-current="page"
+									>Accueil</a
+								>
+							</li>
+							<li class="!ml-0">
+								<a
+									href="list.html"
+									class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+									>Liste des annonces</a
+								>
+							</li>
+
+							<li>
+								<a
+									href="messages.html"
+									class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+									>Messages</a
+								>
+							</li>
+						</ul>
+						<ul
+							class="flex flex-col items-center md:flex-row align-center gap-4"
+						>
+							<a
+								href="post-home.html"
+								class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+							>
+								Publier mon annonce
+							</a>
+							<span
+								class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300"
+								>AH</span
+							>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<!-- breadcrumb -->
+			<nav class="breadcrumbs text-sm my-5">
+				<ul>
+					<li><a href="list.html">Liste des annonces</a></li>
+					<li><a>Région</a></li>
+					<li>Titre de l'annonce</li>
+				</ul>
+			</nav>
+
+			<!-- contenu principal -->
+			<main>
+				<h1 class="text-6xl font-bold my-6">Titre de l'annonce</h1>
+				<section class="md:flex gap-7">
+					<figure class="w-full md:w-1/2 lg:w-7/12 shrink-0">
+						<img
+							class="rounded-lg"
+							src="http://localhost:1337/uploads/plan_d_eau_d47cc65c64.jpg"
+							alt=""
+						/>
+						<figcaption class="text-center my-5 italic opacity-70">
+							Légende facultative
+						</figcaption>
+					</figure>
+					<article>
+						<!-- infos sur l'hôte -->
+						<aside
+							class="host-infos flex items-start gap-4 bg-slate-100 p-5 rounded-lg"
+						>
+							<div class="avatar placeholder mr-1">
+								<div
+									class="bg-neutral text-neutral-content w-6 rounded-full"
+								>
+									<span class="text-xs">JP</span>
+								</div>
+							</div>
+							<div>
+								<h4 class="font-bold">Jeanette</h4>
+								<p>
+									Lorem ipsum dolor, sit amet consectetur
+									adipisicing elit. Odit, recusandae veniam
+									necessitatibus aliquam quisquam aperiam.
+								</p>
+								<small>📆 a rejoint en XXXX</small>
+							</div>
+						</aside>
+
+						<!-- affichage de la note -->
+						<div class="avg-note my-5">
+							<p class="text-2xl font-bold">
+								Cette annonce a été notée XX fois
+							</p>
+							<div class="flex gap-5 mt-3">
+								<b>Note moyenne :</b>
+								<ul id="avg"></ul>
+							</div>
+						</div>
+						<!-- formulaire de notation -->
+						<div
+							class="note my-5 shadow-md rounded-lg p-5 border-slate-100 border"
+						>
+							<p class="text-2xl font-bold">Notez l'annonce !</p>
+							<div class="flex items-center gap-3 mt-4">
+								<div class="rating">
+									<input
+										type="radio"
+										name="rating-2"
+										class="mask mask-star-2 bg-orange-400"
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										class="mask mask-star-2 bg-orange-400"
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										class="mask mask-star-2 bg-orange-400"
+										checked
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										class="mask mask-star-2 bg-orange-400"
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										class="mask mask-star-2 bg-orange-400"
+									/>
+								</div>
+								<button class="btn btn-active btn-neutral">
+									Votez !
+								</button>
+							</div>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing
+							elit. Odio possimus veritatis, cum excepturi,
+							consectetur reiciendis accusantium impedit quidem
+							expedita quibusdam itaque quasi fuga dolor totam
+							recusandae. Libero iure cupiditate nemo! Suscipit
+							eaque, expedita sit illum nobis optio quam velit,
+							ipsa ducimus exercitationem esse magnam, perferendis
+							eligendi repellat corrupti ad cupiditate commodi
+							dolorum. Aut blanditiis assumenda maiores ipsum,
+							porro distinctio dignissimos. Eius, unde repellat
+							blanditiis hic dicta quisquam quaerat eaque
+							consequuntur illum mollitia impedit rerum fugit
+							minus atque laborum sapiente sit non aliquid sed
+							veniam pariatur delectus ipsum? Cupiditate, animi
+							totam. Voluptate eveniet minus eius, culpa accusamus
+							nemo ipsum magnam ut saepe similique impedit dolore!
+							Laudantium distinctio at ullam adipisci, nihil magni
+							sapiente autem ut officia excepturi voluptatum sequi
+							eligendi quis? Deleniti perspiciatis consequuntur,
+							adipisci debitis repellendus architecto illo dolorum
+							deserunt. Impedit in, nemo perferendis vero magni
+							eligendi minima consequatur eveniet, natus, error
+							commodi adipisci sequi iusto officia vitae tempora
+							eos.
+						</p>
+					</article>
+				</section>
+			</main>
+		</div>
+
+		<!-- JS -->
+		<script src="js/main.js" type="module"></script>
+		<script src="js/page/home.js" type="module"></script>
+	</body>
+</html>
