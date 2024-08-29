@@ -43,5 +43,50 @@ export function generateRating(moy, color = "bg-slate-100") {
 	return html;
 }
 
+/**
+ * Générer une notification en bas de page qui disparait après 3 secondes
+ * @param {string} message
+ * @param {string} mode
+ * @returns {HTMLDivElement} La balise html à injecter dans le contenu
+ */
+export function generateHtmlNotif(message, mode = "info") {
+	//------création des différentes balises
+	//toast container
+	const divToast = document.createElement("div");
+	divToast.classList.add("toast");
+	//div à l'intérieur qui va contenir le contenu
+	const divAlert = document.createElement("div");
+	divAlert.classList.add("alert", `alert-${mode}`);
+	//contenu de la notification
+	const progress = document.createElement("progress");
+	progress.classList.add("progress", "w-full");
+	progress.value = 100;
+	progress.max = 100;
+	const span = document.createElement("span");
+	span.textContent = message;
+	//injection des balises les unes dans les autres
+	divAlert.appendChild(progress);
+	divAlert.appendChild(span);
+	divToast.appendChild(divAlert);
+
+	//------ animation/disparition de la notif
+	//dégression de la progressbar
+	const idInterval = setInterval(() => (progress.value -= 1), 30);
+	//disparition de la notif
+	setTimeout(() => {
+		clearInterval(idInterval);
+		divToast.remove();
+	}, 3000);
+
+	return divToast;
+
+	// return `<div class="toast">
+	// 					<div class="alert alert-${mode}">
+	// 					<progress class="progress w-full" value="0" max="100"></progress>
+	// 						<span>${message}</span>
+	// 					</div>
+	// 				</div>`;
+}
+
 //objet qui va nous permettre de faire les appels AJAX
 export const ajax = new AJAX("http://localhost:1337/api/");

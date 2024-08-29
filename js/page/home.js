@@ -1,12 +1,18 @@
 "use strict";
 
-import { avgReviews, generateRating, ajax } from "../utilities.js";
+import {
+	avgReviews,
+	generateRating,
+	ajax,
+	generateHtmlNotif,
+} from "../utilities.js";
 import Home from "../class/home.js";
 
 /*************
  * VARIABLES
  *************/
 let home;
+const RATING = document.querySelector("ul#avg");
 /*************
  * FONCTIONS
  *************/
@@ -57,7 +63,7 @@ async function review() {
 		"reviews?filters[home][id][$eq]=" + home.id
 	);
 	//affichage des étoiles
-	document.querySelector("ul#avg").innerHTML = generateRating(
+	RATING.innerHTML = generateRating(
 		avgReviews(datasReviews.data),
 		"bg-slate-900"
 	);
@@ -69,7 +75,6 @@ async function review() {
 async function load() {
 	const datas = await ajax.get(`homes/${id}?populate=*`);
 	home = new Home({ ...datas.data.attributes, id: datas.data.id });
-	console.log(home);
 	//gestion de l'affichage
 	displayBreadcrumb();
 	displayTitle();
@@ -78,10 +83,45 @@ async function load() {
 	document.querySelector("article>p:last-child").innerHTML = home.description;
 }
 
+/**
+ * Gestion du vote de l'utilisateur qui envoie à l'API et affiche une notification
+ */
+async function vote() {
+	const note = parseInt(document.querySelector(".note input:checked").value);
+	try {
+		const result = await ajax.post("reviews", {
+			data: { note: note, home: id },
+		});
+		if (result.data != null) {
+			review();
+			document.body.insertAdjacentElement(
+				"beforeend",
+				generateHtmlNotif("Votre note a bien été ajoutée.")
+			);
+		} else {
+			document.body.insertAdjacentElement(
+				"beforeend",
+				generateHtmlNotif(
+					"Un problème est survenu, veuillez réessayer ultérieurement.",
+					"warning"
+				)
+			);
+		}
+	} catch (error) {
+		alert("ERROR");
+		console.error(
+			"Une erreur est survenue dans la fonction vote() du fichier page/home.js : " +
+				error
+		);
+	}
+}
+
 /*************
  * CODE PRINCIPAL
  *************/
 //récupération de l'ID dans l'URL
 const id = new URLSearchParams(window.location.search).get("id");
-
+//affichage de la page
 load();
+//gestion de l'ajout du vote
+document.querySelector("#vote").addEventListener("click", vote);
