@@ -1,4 +1,5 @@
 "use strict";
+import AJAX from "./class/ajax.js";
 
 export function openCloseMenuMobile() {
 	document
@@ -41,3 +42,6 @@ export function generateRating(moy, color = "bg-slate-100") {
 	}
 	return html;
 }
+
+//objet qui va nous permettre de faire les appels AJAX
+export const ajax = new AJAX("http://localhost:1337/api/");

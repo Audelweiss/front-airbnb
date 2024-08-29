@@ -3,7 +3,7 @@
  * IMPORTS
  **********/
 import Home from "../class/home.js";
-import { avgReviews, generateRating } from "../utilities.js";
+import { ajax, avgReviews, generateRating } from "../utilities.js";
 /**********
  * VARIABLES
  **********/
@@ -13,32 +13,19 @@ const UL = document.querySelector("#home-list");
  * FONCTIONS
  **********/
 
-/**********
- * CODE PRINCIPAL
- **********/
-
-fetch("http://localhost:1337/api/homes?populate=*")
-	.then((response) => response.json())
-	.then(async (homes) => {
-		//récupération des notes
-		const reviewsResponse = await fetch(
-			"http://localhost:1337/api/reviews?populate=*"
+/**
+ * Génère le HTML de la liste des annonces
+ */
+function displayHomes() {
+	let html = "";
+	for (const home of formattedHomes) {
+		//récupère les reviews de la maison
+		const homeReviews = reviewsDatas.data.filter(
+			(review) => review.attributes.home.data.id == home.id
 		);
-		const reviewsDatas = await reviewsResponse.json();
 
-		//création du tableau avec les objets formatés grâce à la classe Home
-		const formattedHomes = homes.data.map(
-			(home) => new Home({ ...home.attributes, id: home.id })
-		);
-		let html = "";
-		for (const home of formattedHomes) {
-			//récupère les reviews de la maison
-			const homeReviews = reviewsDatas.data.filter(
-				(review) => review.attributes.home.data.id == home.id
-			);
-
-			//Génération du HTML
-			html += `<li class="card-home w-1/2 md:w-1/4 lg:w-1/5 px-3">
+		//Génération du HTML
+		html += `<li class="card-home w-1/2 md:w-1/4 lg:w-1/5 px-3">
 						<a
 							href="home.html?id=${home.id}"
 							class="w-full h-full flex items-end text-white bg-[url('http://localhost:1337${
@@ -50,7 +37,7 @@ fetch("http://localhost:1337/api/homes?populate=*")
 							>
 								<h2>${home.title}</h2>
 								<div class="rating">
-									${generateRating(avgReviews(homeReviews))} 
+									${generateRating(avgReviews(homeReviews))}
 								</div>
 								<div class="host">
 									<div class="avatar placeholder mr-1">
@@ -68,8 +55,22 @@ fetch("http://localhost:1337/api/homes?populate=*")
 							</article>
 						</a>
 					</li>`;
-		}
-		//injection du HTML dans la liste UL
-		UL.innerHTML = html;
-		console.log(" ==== Maisons formatées ====", formattedHomes);
-	});
+	}
+	//injection du HTML dans la liste UL
+	UL.innerHTML = html;
+}
+
+/**********
+ * CODE PRINCIPAL
+ **********/
+
+//récupération des données
+const homes = await ajax.get("homes?populate=*");
+const reviewsDatas = await ajax.get("reviews?populate=*");
+
+//création du tableau avec les objets formatés grâce à la classe Home
+const formattedHomes = homes.data.map(
+	(home) => new Home({ ...home.attributes, id: home.id })
+);
+//affichage
+displayHomes();

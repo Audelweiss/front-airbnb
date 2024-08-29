@@ -7,7 +7,7 @@ class Home {
 	title;
 	bed;
 	cover = { src: "", alt: "" };
-	region;
+	region = { name: "", id: null };
 	description;
 	createdAt;
 	host;
@@ -25,7 +25,8 @@ class Home {
 						};
 						break;
 					case "region":
-						this[prop] = datas.region.data.attributes.label;
+						this[prop].name = datas.region.data.attributes.label;
+						this[prop].id = datas.region.data.id;
 						break;
 					case "createdAt":
 						this[prop] = new Date(this[prop]);
