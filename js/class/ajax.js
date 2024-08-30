@@ -23,13 +23,15 @@ class AJAX {
 		}
 	}
 
-	async post(endpoint, datas, format = false) {
+	async post(endpoint, datas, json = false) {
 		try {
 			this.options.method = "POST";
-			this.options.headers = {
-				"Content-Type": "application/json",
-			};
-			this.options.body = !format ? JSON.stringify(datas) : {};
+			if (json) {
+				this.options.headers = {
+					"Content-Type": "application/json",
+				};
+			}
+			this.options.body = datas;
 
 			const response = await fetch(this.host + endpoint, this.options);
 			return await response.json();

@@ -89,9 +89,13 @@ async function load() {
 async function vote() {
 	const note = parseInt(document.querySelector(".note input:checked").value);
 	try {
-		const result = await ajax.post("reviews", {
-			data: { note: note, home: id },
-		});
+		const result = await ajax.post(
+			"reviews",
+			JSON.stringify({
+				data: { note: note, home: id },
+			}),
+			true
+		);
 		if (result.data != null) {
 			review();
 			document.body.insertAdjacentElement(

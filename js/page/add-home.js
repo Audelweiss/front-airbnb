@@ -1,10 +1,11 @@
 "use strict";
-import { ajax } from "../utilities.js";
+import { ajax, generateHtmlNotif } from "../utilities.js";
 
 /****************
  * VARIABLES
  ****************/
-const ulRegions = document.querySelector("form #regions");
+const form = document.querySelector("form");
+const ulRegions = form.querySelector("#regions");
 /****************
  * FONCTIONS
  ****************/
@@ -28,7 +29,6 @@ async function displayRegions() {
  */
 function loadimg(file, outImage) {
 	if (FileReader && file && file.length) {
-		console.log(file, outImage);
 		const fr = new FileReader();
 		fr.onload = function () {
 			outImage.src = fr.result;
@@ -37,11 +37,63 @@ function loadimg(file, outImage) {
 	}
 }
 
+/**
+ * Récupération des données du formulaire et envoi à l'api
+ * @param {SubmitEvent} event
+ */
+async function submitForm(event) {
+	event.preventDefault();
+	try {
+		const formdatas = new FormData();
+		const file = form.elements.cover.files[0];
+		formdatas.append(`files.cover`, file, file.name);
+		formdatas.append(
+			"data",
+			JSON.stringify({
+				title: form.elements.title.value,
+				bed: form.elements.bed.value,
+				description: form.elements.description.value,
+				region: form.elements.region.value,
+				host: 1, //en dur tant qu'on a pas l'authent
+			})
+		);
+		//ajouter la vérification des données avant de faire l'AJAX
+		const result = await ajax.post("homes", formdatas);
+		if (result.data != null) {
+			form.reset();
+			document.body.insertAdjacentElement(
+				"beforeend",
+				generateHtmlNotif("Votre annonce a bien été ajoutée.")
+			);
+		} else {
+			document.body.insertAdjacentElement(
+				"beforeend",
+				generateHtmlNotif(
+					"Un problème est survenu, veuillez réessayer ultérieurement.",
+					"warning"
+				)
+			);
+		}
+	} catch (error) {
+		document.body.insertAdjacentElement(
+			"beforeend",
+			generateHtmlNotif(
+				"Un problème est survenu, veuillez réessayer ultérieurement.",
+				"warning"
+			)
+		);
+		console.error(error);
+	}
+}
+
 /****************
  * CODE PRINCIPAL
  ****************/
 
 displayRegions();
+
+//gestion de la soumission du formulaire
+form.addEventListener("submit", submitForm);
 
 //Gestion de la prévisualisation pour chaque élément du formulaire
 //Pour Pierre : complexification via une boucle en prévision d'un formulaire avec beaucoup plus de champs 😅✌️

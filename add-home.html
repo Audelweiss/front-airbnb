@@ -119,6 +119,7 @@
 								type="text"
 								class="grow"
 								id="title"
+								name="title"
 								placeholder="______________"
 							/>
 						</label>
@@ -130,6 +131,7 @@
 							</div>
 							<input
 								id="cover"
+								name="cover"
 								type="file"
 								class="file-input file-input-bordered w-full max-w-xs"
 							/>
@@ -138,11 +140,30 @@
 							<div class="label">
 								<span class="label-text">Région :</span>
 							</div>
-							<select id="regions" class="select select-bordered">
+							<select
+								id="regions"
+								name="region"
+								class="select select-bordered"
+							>
 								<option disabled selected>
 									Choisir la région où se trouve le bien
 								</option>
 							</select>
+						</label>
+						<label class="form-control w-full max-w-xs">
+							<div class="label">
+								<span class="label-text">Nombre de lits :</span>
+							</div>
+							<input
+								id="bed"
+								name="bed"
+								type="range"
+								min="0"
+								max="10"
+								value="1"
+								class="range"
+								step="1"
+							/>
 						</label>
 						<label class="form-control">
 							<div class="label">
@@ -152,11 +173,16 @@
 							</div>
 							<textarea
 								id="description"
+								name="description"
 								class="textarea textarea-bordered h-24"
 								placeholder="Bio"
 							></textarea>
 						</label>
-						<button id="submit" class="btn btn-neutral mt-8">
+						<button
+							type="submit"
+							id="submit"
+							class="btn btn-neutral mt-8"
+						>
 							Ajouter mon annonce
 						</button>
 					</form>
@@ -180,6 +206,7 @@
 							src="img/placeholder.jpg"
 							class="coverPreview aspect-[4/3] object-cover rounded-lg my-3"
 						/>
+
 						<p class="descriptionPreview">
 							Lorem, ipsum dolor sit amet consectetur adipisicing
 							elit. Eaque veritatis ratione repudiandae aliquam
@@ -187,6 +214,8 @@
 							impedit corporis laborum a, eum provident enim,
 							dignissimos animi necessitatibus.
 						</p>
+						<hr class="my-4" />
+						<p>Nombre de lits : <span class="bedPreview"></span></p>
 					</aside>
 				</div>
 			</main>
