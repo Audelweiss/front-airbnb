@@ -68,15 +68,15 @@
 							<li>
 								<a
 									href="index.html"
-									class="block py-2 px-3 text-neutral bg-gray-100 rounded"
+									class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
 									aria-current="page"
 									>Accueil</a
 								>
 							</li>
 							<li class="!ml-0">
 								<a
+									class="block py-2 px-3 text-neutral bg-gray-100 rounded"
 									href="list.html"
-									class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
 									>Liste des annonces</a
 								>
 							</li>
@@ -93,7 +93,7 @@
 							class="flex flex-col items-center md:flex-row align-center gap-4"
 						>
 							<a
-								href="add-home.html"
+								href="post-home.html"
 								class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
 							>
 								Publier mon annonce
@@ -106,9 +106,93 @@
 					</div>
 				</div>
 			</nav>
+
+			<main>
+				<h1 class="text-6xl font-bold my-6">Ajouter une annonce</h1>
+				<div class="lg:flex lg:gap-24">
+					<form action="" class="lg:w-7/12 mb-10 shrink-0">
+						<label
+							class="input input-bordered flex items-center gap-2"
+						>
+							Titre de l'annonce
+							<input
+								type="text"
+								class="grow"
+								id="title"
+								placeholder="______________"
+							/>
+						</label>
+						<label class="form-control w-full max-w-xs">
+							<div class="label">
+								<span class="label-text"
+									>Photo de l'annonce</span
+								>
+							</div>
+							<input
+								id="cover"
+								type="file"
+								class="file-input file-input-bordered w-full max-w-xs"
+							/>
+						</label>
+						<label class="form-control w-full max-w-xs">
+							<div class="label">
+								<span class="label-text">Région :</span>
+							</div>
+							<select id="regions" class="select select-bordered">
+								<option disabled selected>
+									Choisir la région où se trouve le bien
+								</option>
+							</select>
+						</label>
+						<label class="form-control">
+							<div class="label">
+								<span class="label-text"
+									>Description de l'annonce</span
+								>
+							</div>
+							<textarea
+								id="description"
+								class="textarea textarea-bordered h-24"
+								placeholder="Bio"
+							></textarea>
+						</label>
+						<button id="submit" class="btn btn-neutral mt-8">
+							Ajouter mon annonce
+						</button>
+					</form>
+
+					<aside class="shadow-lg rounded-lg p-5">
+						<p class="font-bold text-lg mb-5">
+							📸 Aperçu de votre annonce
+						</p>
+						<hr />
+						<div class="breadcrumbs text-sm mt-5">
+							<ul>
+								<li>Liste des annonces</li>
+								<li class="regionsPreview">Région</li>
+								<li class="titlePreview">Titre de l'annonce</li>
+							</ul>
+						</div>
+						<p class="titlePreview text-6xl font-bold my-6">
+							Titre de l'annonce
+						</p>
+						<img
+							src="img/placeholder.jpg"
+							class="coverPreview aspect-[4/3] object-cover rounded-lg my-3"
+						/>
+						<p class="descriptionPreview">
+							Lorem, ipsum dolor sit amet consectetur adipisicing
+							elit. Eaque veritatis ratione repudiandae aliquam
+							velit sunt error quae reiciendis quas cupiditate
+							impedit corporis laborum a, eum provident enim,
+							dignissimos animi necessitatibus.
+						</p>
+					</aside>
+				</div>
+			</main>
 		</div>
 
-		<!-- JS -->
 		<script src="js/main.js" type="module"></script>
+		<script src="js/page/add-home.js" type="module"></script>
 	</body>
 </html>
